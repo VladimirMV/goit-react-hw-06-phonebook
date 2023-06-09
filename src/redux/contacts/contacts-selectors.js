@@ -1,6 +1,3 @@
-import { toast } from 'react-toastify';
-import { toastifyOptions } from 'utils/toastifyOptions';
-
 export const getContacts = store => store.contacts;
 
 export const getFilteredContacts = store => {
@@ -16,7 +13,7 @@ export const getFilteredContacts = store => {
   );
 
   if (normalizedFilter && !filteredContacts.length) {
-    toast.warn(`No contacts matching your request`, toastifyOptions);
+    alert(`No contacts matching your request`);
   }
   return filteredContacts;
 };

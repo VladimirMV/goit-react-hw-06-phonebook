@@ -2,9 +2,6 @@ import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contacts/contacts-slice';
 import { getContacts } from 'redux/contacts/contacts-selectors';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { toastifyOptions } from 'utils/toastifyOptions';
 import s from './ContactForm.module.css';
 import React from 'react';
 
@@ -34,10 +31,7 @@ export const ContactForm = () => {
 
   const onAddContact = ({ name, number }) => {
     if (isDublicate({ name, number })) {
-      return toast.error(
-        `This contact is already in contacts`,
-        toastifyOptions
-      );
+      return alert(`😱 This contact is already in contacts`);
     }
 
     dispatch(addContact({ name, number }));
