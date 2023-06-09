@@ -4,7 +4,7 @@ import initialContacts from 'data/contacts.json';
 
 const contactsSlice = createSlice({
   name: 'contacts',
-  initialState: initialContacts,
+  initialState: ' ',
   reducers: {
     addContact: {
       prepare(name, number) {

@@ -5,7 +5,7 @@ import { getFilteredContacts } from 'redux/contacts/contacts-selectors';
 
 function ContactList() {
   const filteredContacts = useSelector(state => state.contacts.items);
-  console.log('filteredContacts =====', filteredContacts);
+  console.log('filteredContacts', filteredContacts);
   const dispatch = useDispatch();
 
   const onDeleteContact = contactId => {

@@ -6,14 +6,14 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { toastifyOptions } from 'utils/toastifyOptions';
 
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import s from './ContactForm.module.css';
 import React from 'react';
 import { store } from 'redux/store';
 
-// const initialValues = { name: '', number: '' };
+const initialValues = { name: '', number: '' };
 
-function ContactForm() {
+export const ContactForm = () => {
   const {
     register,
     handleSubmit,
@@ -22,6 +22,7 @@ function ContactForm() {
   } = useForm({
     mode: 'onBlur',
   });
+  console.log('register', register);
   const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
   console.log(
@@ -115,8 +116,4 @@ function ContactForm() {
       </button>
     </form>
   );
-}
-ContactForm.propType = {
-  onSubmit: PropTypes.func.isRequired,
 };
-export default ContactForm;

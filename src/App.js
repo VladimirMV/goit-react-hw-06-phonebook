@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import Container from './components/Container/Container';
-import ContactForm from './components/ContactForm/ContactForm';
+import { ContactForm } from './components/ContactForm/ContactForm';
 import Filter from './components/Filter/Filter';
 import ContactList from './components/ContactList/ContactList';
 import { getContacts } from 'redux/contacts/contacts-selectors';
