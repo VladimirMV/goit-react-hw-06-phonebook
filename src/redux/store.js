@@ -1,5 +1,3 @@
-// If using Redux-Persist, you should specifically ignore all the action types it dispatches
-// https://redux-toolkit.js.org/usage/usage-guide#working-with-non-serializable-data
 import { configureStore } from '@reduxjs/toolkit';
 import {
   persistStore,

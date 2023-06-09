@@ -5,8 +5,6 @@ import { getContacts } from 'redux/contacts/contacts-selectors';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { toastifyOptions } from 'utils/toastifyOptions';
-
-// import PropTypes from 'prop-types';
 import s from './ContactForm.module.css';
 import React from 'react';
 
