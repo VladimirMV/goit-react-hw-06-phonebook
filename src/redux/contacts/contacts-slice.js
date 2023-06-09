@@ -4,24 +4,23 @@ import initialContacts from 'data/contacts.json';
 
 const contactsSlice = createSlice({
   name: 'contacts',
-  initialState: ' ',
+  initialState: initialContacts,
   reducers: {
     addContact: {
-      prepare(name, number) {
+      reducer: (state, { payload }) => {
+        return [...state, payload];
+      },
+      prepare: data => {
         return {
           payload: {
             id: shortid(),
-            name,
-            number,
+            ...data,
           },
         };
       },
-      reducer(state, { payload }) {
-        return [...state, payload];
-      },
     },
-    deleteContact(state, { payload }) {
-      return [...state].filter(contact => contact.id !== payload);
+    deleteContact: (state, { payload }) => {
+      return state.filter(({ id }) => id !== payload);
     },
   },
 });

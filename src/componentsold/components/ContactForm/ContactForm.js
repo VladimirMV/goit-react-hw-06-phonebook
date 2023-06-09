@@ -9,6 +9,9 @@ import { toastifyOptions } from 'utils/toastifyOptions';
 // import PropTypes from 'prop-types';
 import s from './ContactForm.module.css';
 import React from 'react';
+import { store } from 'redux/store';
+
+const initialValues = { name: '', number: '' };
 
 export const ContactForm = () => {
   const {
@@ -19,13 +22,28 @@ export const ContactForm = () => {
   } = useForm({
     mode: 'onBlur',
   });
-
+  console.log('register', register);
   const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
+  console.log(
+    'contacts getContacts',
+    contacts,
+    'store.contacts',
+    store.contacts
+  );
+  //   const onSubmitHandler = (values,  reset ) => {
+  //         onAddContact({ ...values });
+  //         // resetForm();
+  //     reset();
+  //   };
+  // onSubmit={(values, { resetForm }) => {
+  //         onAddContact({ ...values });
+  //         resetForm();
 
   const isDublicate = ({ name, number }) => {
     const normalizedName = name.toLowerCase().trim();
     const normalizedNumber = number.trim();
+    console.log('contacts', contacts);
     const dublicate = contacts.find(
       contact =>
         contact.name.toLowerCase().trim() === normalizedName ||
@@ -35,18 +53,22 @@ export const ContactForm = () => {
   };
 
   const onAddContact = ({ name, number }) => {
+    console.log('onAddContact name, number', name, number);
     if (isDublicate({ name, number })) {
       return toast.error(
         `This contact is already in contacts`,
         toastifyOptions
       );
     }
-
+    console.log('dispatch <><><>< name, number', name, number);
     dispatch(addContact({ name, number }));
+    // const action = addContact({ name, number });
+    // dispatch(action);
   };
 
-  const onSubmitHandler = values => {
+  const onSubmitHandler = (values, reset) => {
     onAddContact({ ...values });
+    // resetForm();
     reset();
   };
 

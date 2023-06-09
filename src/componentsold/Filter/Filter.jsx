@@ -2,26 +2,29 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setFilter } from 'redux/filter/filter-slice';
 import { getFilter } from 'redux/filter/filter-selectors';
 
-import s from './Filter.module.css';
+import { BsSearch } from 'react-icons/bs';
+import { LabelWrapper, Input, LabelDescr, LabelSpan } from './Filter.styled';
 
-function Filter() {
+export const Filter = () => {
   const filter = useSelector(getFilter);
   const dispatch = useDispatch();
-
+console.log('filter', filter);
   const changeFilter = e => {
     dispatch(setFilter(e.target.value.toLowerCase().trim()));
   };
+
   return (
-    <label className={s.label}>
-      Find contacts by name
-      <input
-        className={s.input}
+    <LabelDescr>
+      <LabelWrapper>
+        <BsSearch size="16" />
+        <LabelSpan>Find contacts by name</LabelSpan>
+      </LabelWrapper>
+      <Input
         type="text"
         value={filter}
         onChange={changeFilter}
+        placeholder="Search..."
       />
-    </label>
+    </LabelDescr>
   );
-}
-
-export default Filter;
+};

@@ -7,7 +7,6 @@ import { getContacts } from 'redux/contacts/contacts-selectors';
 
 function App() {
   const contacts = useSelector(getContacts);
-  console.log('contacts.length =', contacts.length, contacts);
   return (
     <Container>
       <h1>Phonebook</h1>

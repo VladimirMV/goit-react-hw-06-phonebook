@@ -11,6 +11,7 @@ function Filter() {
   const changeFilter = e => {
     dispatch(setFilter(e.target.value.toLowerCase().trim()));
   };
+  console.log('filter ===============', filter);
   return (
     <label className={s.label}>
       Find contacts by name

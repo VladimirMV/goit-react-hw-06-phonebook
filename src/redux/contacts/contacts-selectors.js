@@ -1,11 +1,10 @@
 import { toast } from 'react-toastify';
 import { toastifyOptions } from 'utils/toastifyOptions';
 
-export const getContacts = store => store.contacts.items;
+export const getContacts = store => store.contacts;
 
 export const getFilteredContacts = store => {
-  const { contacts, filter } = store;
-  console.log('getFilteredContacts, contacts, filter', contacts, filter);
+  const { filter, contacts } = store;
   if (!filter) {
     return contacts;
   }

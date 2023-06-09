@@ -1,16 +1,19 @@
+// If using Redux-Persist, you should specifically ignore all the action types it dispatches
+// https://redux-toolkit.js.org/usage/usage-guide#working-with-non-serializable-data
 import { configureStore } from '@reduxjs/toolkit';
-import { rootReducer } from './root-reducer';
 import {
   persistStore,
   persistReducer,
   FLUSH,
   REHYDRATE,
-  REGISTER,
-  PURGE,
   PAUSE,
   PERSIST,
+  PURGE,
+  REGISTER,
 } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
+
+import { rootReducer } from './root-reducer';
 
 const persistConfig = {
   key: 'root',
