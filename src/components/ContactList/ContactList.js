@@ -1,29 +1,24 @@
 import s from './ContactList.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact } from 'redux/contacts/contacts-slice';
-// import { getFilteredContacts } from 'redux/contacts/contacts-selectors';
+import { getContacts } from 'redux/contacts/contacts-selectors';
+import { getFilter } from 'redux/filter/filter-selectors';
 
 function ContactList() {
-  const getFilteredContacts = store => {
-    const { filter, contacts } = store;
-    if (!filter) {
-      return contacts;
-    }
-    const normalizedFilter = filter.toLowerCase();
-    const filteredContacts = contacts.filter(
-      ({ name, number }) =>
-        name.toLowerCase().trim().includes(normalizedFilter) ||
-        number.trim().includes(normalizedFilter)
-    );
-
-    if (normalizedFilter && !filteredContacts.length) {
-      alert(`No contacts matching your request`);
-    }
-    return filteredContacts;
-  };
-
-  const filteredContacts = useSelector(getFilteredContacts);
+  const contacts = useSelector(getContacts);
+  const filter = useSelector(getFilter);
   const dispatch = useDispatch();
+
+  const normalizedFilter = filter.toLowerCase();
+  const filteredContacts = contacts.filter(
+    ({ name, number }) =>
+      name.toLowerCase().trim().includes(normalizedFilter) ||
+      number.trim().includes(normalizedFilter)
+  );
+
+  if (normalizedFilter && !filteredContacts.length) {
+    alert(`No contacts matching your request`);
+  }
 
   const onDeleteContact = contactId => {
     dispatch(deleteContact(contactId));
